@@ -31,13 +31,13 @@ class RoomCard extends React.Component {
         <div>
           <span>
             <label>Adults (18+)</label>
-            <select defaultValue={1} disabled={!selected}>
+            <select value={adults} disabled={!selected}>
               { this.createNumericOptions() }
             </select>
           </span>
           <span>
             <label>Children (18+)</label>
-            <select defaultValue={0} disabled={!selected}>
+            <select value={kids} disabled={!selected}>
               { this.createNumericOptions() }
             </select>
           </span>

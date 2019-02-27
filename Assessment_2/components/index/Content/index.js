@@ -16,8 +16,17 @@ class Content extends React.Component {
     }
 
     for (let i = 0; i < maxRooms; i++) {
-      const roomData = data[i]
+      let roomData = data[i]
       const key = `r${i}`
+
+      if (!roomData) {
+        roomData = {
+          selected: i === 0,
+          adults: 1,
+          kids: 0
+        }
+      }
+
       stateIndex[key] = { ...roomData }
       stateIndex.roomsOrder.push(key)
     }
