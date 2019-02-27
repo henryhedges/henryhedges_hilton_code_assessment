@@ -28,9 +28,18 @@ class Content extends React.Component {
   renderRooms(allRooms = []) {
     return allRooms.map((room, idx) => <RoomCard key={room} roomNumber={idx + 1} {...this.state[room]} />)
   }
+
+  submit = (e) => {
+    e.preventDefault()
+    console.log('submitting...')
+  }
   
   render() {
-    return this.renderRooms(this.state.roomsOrder)
+    return (
+      <form onSubmit={this.submit}>
+        { this.renderRooms(this.state.roomsOrder) }
+      </form>
+    )
   }
 }
 
