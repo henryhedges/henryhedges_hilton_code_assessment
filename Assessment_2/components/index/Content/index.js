@@ -35,7 +35,27 @@ class Content extends React.Component {
   }
 
   renderRooms(allRooms = []) {
-    return allRooms.map((room, idx) => <RoomCard key={room} roomNumber={idx + 1} {...this.state[room]} />)
+    return allRooms.map((room, idx) => (
+      <RoomCard
+        key={room}
+        roomKey={room}
+        roomNumber={idx + 1}
+        selectedChange={this.selectedChange}
+        {...this.state[room]}
+      />
+    ))
+  }
+
+  selectedChange = (room, key, value) => {
+    console.log('Called')
+    const newState = { ...this.state, 
+      [room]: {
+        ...this.state[room],
+        [key]: value
+      }
+    }
+
+    this.setState(newState)
   }
 
   submit = (e) => {
