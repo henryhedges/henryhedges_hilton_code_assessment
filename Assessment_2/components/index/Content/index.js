@@ -39,27 +39,24 @@ class Content extends React.Component {
   }
 
   inputChange = (room, key, value) => {
-    this.selectedChange(room, key, value, () => {
-      let state = this.state;
-      const idxOfRoom = state.roomsOrder.indexOf(room)
+    let state = this.state;
+    const idxOfRoom = state.roomsOrder.indexOf(room)
 
-      if (idxOfRoom > 0) {
-        if (value) {
-          for (let i = idxOfRoom - 1; i > 0; i--) {
-            const newRoom = state.roomsOrder[i]
-            state = this.copyState(newRoom, key, value, state)
-          }
-        } else {
-          for (let i = idxOfRoom + 1; i < state.roomsOrder.length; i++) { 
-            const newRoom = state.roomsOrder[i]
-            console.log(newRoom)
-            state = {...state, [newRoom]: this.createDefaultRoomData(i)}
-          }
+    if (idxOfRoom > 0) {
+      if (value) {
+        for (let i = idxOfRoom; i > 0; i--) {
+          const newRoom = state.roomsOrder[i]
+          state = this.copyState(newRoom, key, value, state)
+        }
+      } else {
+        for (let i = idxOfRoom; i < state.roomsOrder.length; i++) { 
+          const newRoom = state.roomsOrder[i]
+          state = {...state, [newRoom]: this.createDefaultRoomData(i)}
         }
       }
+    }
 
-      this.setState(state)
-    })
+    this.setState(state)
   }
 
   renderRooms(allRooms = []) {
