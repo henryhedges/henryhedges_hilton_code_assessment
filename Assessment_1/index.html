@@ -10,15 +10,17 @@
 <body>
   <header class="header">
     <nav>
-      <a class="header__nav-button">&lsaquo; Back</a>
+      <a class="header__nav-button" href="#back"><span>&lsaquo;</span><span>Back</span></a>
     </nav>
     <h3 class="header__details">Hotel Details</h3>
-    <img src="images/Hilton_Brand_Logo_No_Text.png"/>
+    <a href="#home"><img src="images/Hilton_Brand_Logo_No_Text.png"/></a>
   </header>
   <main>
     <section class="content">
       <figure class="figure">
-        <img src="images/hotelexterior.jpg" alt="Hilton Chicago - Building Exterior"/>
+        <a href="#chicago">
+          <img src="images/hotelexterior.jpg" alt="Hilton Chicago - Building Exterior"/>
+        </a>
       </figure>
       <article class="contact">
         <h2>Hilton Chicago</h2>
@@ -29,13 +31,15 @@
     </section>
     <nav>
       <ul class="menu">
-        <li>Menu</li>
-        <li>Photo gallery</li>
-        <li>Amenities</li>
-        <li>Concierge</li>
+        <li><a href="#map"><span>Map</span><span>&rsaquo;</span></a></li>
+        <li><a href="#photos"><span>Photo gallery</span><span>&rsaquo;</span></a></li>
+        <li><a href="#ameneties"><span>Amenities</span><span>&rsaquo;</span></a></li>
+        <li><a href="#concierge"><span>Concierge</span><span>&rsaquo;</span></a></li>
       </ul>
     </nav>
   </main>
-  <footer></footer>
+  <footer>
+    <div></div><img src="images/Hilton_Brand_Logo_Text_Only.png"/><span>2019</span></div>
+  </footer>
 </body>
 </html>
