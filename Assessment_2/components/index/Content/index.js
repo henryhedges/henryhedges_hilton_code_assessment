@@ -95,9 +95,20 @@ class Content extends React.Component {
   
   render() {
     return (
-      <form onSubmit={this.submit}>
-        {this.renderRooms(this.state.roomsOrder)}
+      <form className="index_content" onSubmit={this.submit}>
+        <div className="roomcardcontainer">
+          {this.renderRooms(this.state.roomsOrder)}
+        </div>
         <button type='submit'>Submit</button>
+        <style jsx>{`
+          .index_content {
+            padding: 3rem;
+          }
+          .index_content > .roomcardcontainer {
+            display: flex;
+            margin-bottom: 3rem;
+          }
+        `}</style>
       </form>
     )
   }

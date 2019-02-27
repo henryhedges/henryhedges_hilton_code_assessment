@@ -10,7 +10,7 @@ const App = (props) => (
 
 App.getInitialProps = () => {
   return {
-    data,
+    data: [],
     maxRooms: 4
   }
 }
