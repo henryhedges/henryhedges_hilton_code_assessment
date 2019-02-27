@@ -3,11 +3,11 @@ import React from "react";
 class RoomCard extends React.Component {
   state = {};
 
-  createNumericOptions(limit = 2) {
+  createNumericOptions(limit = 2, type) {
     const options = [];
 
     for (let i = 0; i < limit; i++) {
-      options.push(<option value={i}>{i}</option>)
+      options.push(<option key={`${i}-${type}`} value={i}>{i}</option>)
     }
 
     return options;

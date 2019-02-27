@@ -4,23 +4,33 @@ import RoomCard from './RoomCard'
 class Content extends React.Component {
   constructor(props) {
     super(props)
+    
+    const { data, maxRooms } = this.props;
 
-    this.state = this.createInitialState(this.props.data)
+    this.state = this.createInitialState(data, maxRooms)
   }
 
-  createInitialState(data) {
-    const stateIndex = {}
+  createInitialState(data, maxRooms) {
+    const stateIndex = {
+      roomsOrder: []
+    }
+
+    for (let i = 0; i < maxRooms; i++) {
+      const roomData = data[i]
+      const key = `r${i}`
+      stateIndex[key] = { ...roomData }
+      stateIndex.roomsOrder.push(key)
+    }
 
     return stateIndex
   }
 
   renderRooms(allRooms = []) {
-    return allRooms.map(room => <RoomCard {...room} />)
+    return allRooms.map((room, idx) => <RoomCard key={room} roomNumber={idx + 1} {...this.state[room]} />)
   }
   
   render() {
-    const { maxRooms } = this.props;
-    return this.renderRooms()
+    return this.renderRooms(this.state.roomsOrder)
   }
 }
 
