@@ -14,8 +14,8 @@ class RoomCard extends React.Component {
   }
 
   render() {
-    const { adults, roomKey, kids, roomNumber, selected, selectedChange } = this.props;
-    const isFirstRoom = roomNumber === 1;
+    const { adults, roomKey, kids, roomNumber, selected, selectedChange } = this.props
+    const isFirstRoom = roomNumber === 1
 
     return (
       <div className='room-card'>
@@ -31,13 +31,13 @@ class RoomCard extends React.Component {
         <div>
           <span>
             <label>Adults (18+)</label>
-            <select disabled={!selected} value={adults} onChange={selectedChange.bind(this, roomKey, 'adults')}>
+            <select disabled={!selected} value={adults} onChange={(e) => selectedChange(roomKey, 'adults', e.target.value)}>
               { this.createNumericOptions() }
             </select>
           </span>
           <span>
             <label>Children (18+)</label>
-            <select disabled={!selected} value={kids} onChange={selectedChange.bind(this, roomKey, 'kids')}>
+            <select disabled={!selected} value={kids} onChange={(e) => selectedChange(roomKey, 'kids', e.target.value)}>
               { this.createNumericOptions() }
             </select>
           </span>

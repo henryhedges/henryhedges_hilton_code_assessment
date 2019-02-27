@@ -47,13 +47,19 @@ class Content extends React.Component {
   }
 
   selectedChange = (room, key, value) => {
-    console.log('Called')
-    const newState = { ...this.state, 
+    console.log('Select Cahnge - room => ', room)
+    console.log('Select Cahnge - key => ', key)
+    console.log('Select Cahnge - value => ', value)
+
+    const newState = {
+      ...this.state, 
       [room]: {
         ...this.state[room],
         [key]: value
       }
     }
+
+    console.log('Select Cahnge - newState => ', newState)
 
     this.setState(newState)
   }
