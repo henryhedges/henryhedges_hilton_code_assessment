@@ -14,7 +14,7 @@ class RoomCard extends React.Component {
   }
 
   render() {
-    const { roomNumber } = this.props;
+    const { adults, kids, roomNumber, selected } = this.props;
     const isFirstRoom = roomNumber === 1;
 
     return (
@@ -31,13 +31,13 @@ class RoomCard extends React.Component {
         <div>
           <span>
             <label>Adults (18+)</label>
-            <select defaultValue={1}>
+            <select defaultValue={1} disabled={!selected}>
               { this.createNumericOptions() }
             </select>
           </span>
           <span>
             <label>Children (18+)</label>
-            <select>
+            <select defaultValue={0} disabled={!selected}>
               { this.createNumericOptions() }
             </select>
           </span>
