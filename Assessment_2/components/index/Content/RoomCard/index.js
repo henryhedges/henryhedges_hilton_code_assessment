@@ -3,7 +3,7 @@ import React from "react";
 class RoomCard extends React.Component {
   state = {};
 
-  createNumericOptions(limit = 10) {
+  createNumericOptions(limit = 2) {
     const options = [];
 
     for (let i = 0; i < limit; i++) {
@@ -16,7 +16,7 @@ class RoomCard extends React.Component {
   render() {
     const { roomNumber } = this.props;
     const isFirstRoom = roomNumber === 1;
-    
+
     return (
       <div className='room-card'>
         <div>

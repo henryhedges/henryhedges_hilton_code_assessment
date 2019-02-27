@@ -3,9 +3,9 @@ import RoomCard from './RoomCard'
 
 class Content extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
-
+  
   render() {
     return (
       <RoomCard></RoomCard>
