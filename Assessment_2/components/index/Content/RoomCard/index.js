@@ -1,8 +1,6 @@
 import React from "react";
 
 class RoomCard extends React.Component {
-  state = {};
-
   createNumericOptions(limit = 2, type) {
     const options = [];
 
@@ -47,7 +45,7 @@ class RoomCard extends React.Component {
           <span>
             <label>Children (18+)</label>
             <select disabled={!selected} value={kids} onChange={(e) => selectedChange(roomKey, 'kids', e.target.value)}>
-              { this.createNumericOptions() }
+              { this.createNumericOptions(4) }
             </select>
           </span>
         </div>

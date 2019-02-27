@@ -13,8 +13,8 @@ class Content extends React.Component {
   createDefaultRoomData(i) {
     return {
       selected: i === 0,
-      adults: 1,
-      kids: 0
+      adults: '1',
+      kids: '0'
     }
   }
 
@@ -83,10 +83,6 @@ class Content extends React.Component {
   }
 
   selectedChange = (room, key, value, cb) => {
-
-    console.log('selected Cahnge - room :', room)
-    console.log('selected Cahnge - key :', key)
-    console.log('selected Cahnge - value :', value)
     const newState = this.copyState(room, key, value, this.state)
 
     this.setState(newState, cb)
@@ -100,7 +96,8 @@ class Content extends React.Component {
   render() {
     return (
       <form onSubmit={this.submit}>
-        { this.renderRooms(this.state.roomsOrder) }
+        {this.renderRooms(this.state.roomsOrder)}
+        <button type='submit'>Submit</button>
       </form>
     )
   }
