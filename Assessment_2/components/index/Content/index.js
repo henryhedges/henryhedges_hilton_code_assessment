@@ -10,6 +10,14 @@ class Content extends React.Component {
     this.state = this.createInitialState(data, maxRooms)
   }
 
+  createDefaultRoomData(i) {
+    return {
+      selected: i === 0,
+      adults: 1,
+      kids: 0
+    }
+  }
+
   createInitialState(data, maxRooms) {
     const stateIndex = {
       roomsOrder: []
@@ -20,11 +28,7 @@ class Content extends React.Component {
       const key = `r${i}`
 
       if (!roomData) {
-        roomData = {
-          selected: i === 0,
-          adults: 1,
-          kids: 0
-        }
+        roomData = this.createDefaultRoomData(i)
       }
 
       stateIndex[key] = { ...roomData }
@@ -34,9 +38,34 @@ class Content extends React.Component {
     return stateIndex
   }
 
+  inputChange = (room, key, value) => {
+    this.selectedChange(room, key, value, () => {
+      let state = this.state;
+      const idxOfRoom = state.roomsOrder.indexOf(room)
+
+      if (idxOfRoom > 0) {
+        if (value) {
+          for (let i = idxOfRoom - 1; i > 0; i--) {
+            const newRoom = state.roomsOrder[i]
+            state = this.copyState(newRoom, key, value, state)
+          }
+        } else {
+          for (let i = idxOfRoom + 1; i < state.roomsOrder.length; i++) { 
+            const newRoom = state.roomsOrder[i]
+            console.log(newRoom)
+            state = {...state, [newRoom]: this.createDefaultRoomData(i)}
+          }
+        }
+      }
+
+      this.setState(state)
+    })
+  }
+
   renderRooms(allRooms = []) {
     return allRooms.map((room, idx) => (
       <RoomCard
+        inputChange={this.inputChange}
         key={room}
         roomKey={room}
         roomNumber={idx + 1}
@@ -46,22 +75,24 @@ class Content extends React.Component {
     ))
   }
 
-  selectedChange = (room, key, value) => {
-    console.log('Select Cahnge - room => ', room)
-    console.log('Select Cahnge - key => ', key)
-    console.log('Select Cahnge - value => ', value)
-
-    const newState = {
-      ...this.state, 
+  copyState(room, key, value, state) {
+    return {
+      ...state, 
       [room]: {
-        ...this.state[room],
+        ...state[room],
         [key]: value
       }
     }
+  }
 
-    console.log('Select Cahnge - newState => ', newState)
+  selectedChange = (room, key, value, cb) => {
 
-    this.setState(newState)
+    console.log('selected Cahnge - room :', room)
+    console.log('selected Cahnge - key :', key)
+    console.log('selected Cahnge - value :', value)
+    const newState = this.copyState(room, key, value, this.state)
+
+    this.setState(newState, cb)
   }
 
   submit = (e) => {

@@ -14,7 +14,16 @@ class RoomCard extends React.Component {
   }
 
   render() {
-    const { adults, roomKey, kids, roomNumber, selected, selectedChange } = this.props
+    const { 
+      adults, 
+      inputChange,
+      kids, 
+      roomKey, 
+      roomNumber, 
+      selected, 
+      selectedChange
+    } = this.props
+
     const isFirstRoom = roomNumber === 1
 
     return (
@@ -22,7 +31,7 @@ class RoomCard extends React.Component {
         <div>
           { !isFirstRoom && (
               <span>
-                <input checked={selected} type='checkbox'/>
+                <input checked={selected} type='checkbox' onChange={(e) => inputChange(roomKey, 'selected', e.target.checked)}/>
               </span>
             )
           }
