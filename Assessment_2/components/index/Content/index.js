@@ -1,13 +1,33 @@
 import React from 'react'
 import RoomCard from './RoomCard'
 
-class Content extends React.Component {
-  constructor(props) {
-    super(props)
-    
-    const { data, maxRooms } = this.props;
+const LOCAL_STORAGE_KEY = 'appdata'
 
-    this.state = this.createInitialState(data, maxRooms)
+class Content extends React.Component {
+  state = {
+    roomsOrder: []
+  }
+
+  componentDidMount() {
+    let { data } = this.props;
+
+    if (!data.length && this.checkLocalStorage()) {
+      data = this.getLocalData()
+    }
+
+    this.setState(this.createInitialState(data, 4))
+  }
+
+  checkLocalStorage() {
+    return localStorage.hasOwnProperty(LOCAL_STORAGE_KEY)
+  }
+
+  getLocalData() {
+    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+  }
+
+  setLocalData(data) {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data))
   }
 
   createDefaultRoomData(i) {
@@ -22,7 +42,7 @@ class Content extends React.Component {
     const stateIndex = {
       roomsOrder: []
     }
-
+    
     for (let i = 0; i < maxRooms; i++) {
       let roomData = data[i]
       const key = `r${i}`
@@ -90,7 +110,13 @@ class Content extends React.Component {
 
   submit = (e) => {
     e.preventDefault()
-    console.log('submitting...')
+
+    const data = this.state.roomsOrder.reduce((acc, cur) => { 
+      acc.push(this.state[cur])
+      return acc
+    }, [])
+
+    this.setLocalData(data)
   }
   
   render() {
@@ -112,6 +138,10 @@ class Content extends React.Component {
       </form>
     )
   }
+}
+
+Content.defaultProps = {
+  data: []
 }
 
 export default Content

@@ -1,18 +1,10 @@
 import Content from '../components/index/Content'
 import Layout from '../components/Layout'
-import data from '../data/index/data';
 
-const App = (props) => (
+const App = () => (
   <Layout>
-    <Content {...props}/>
+    <Content/>
   </Layout>
 )
-
-App.getInitialProps = () => {
-  return {
-    data: [],
-    maxRooms: 4
-  }
-}
 
 export default App
