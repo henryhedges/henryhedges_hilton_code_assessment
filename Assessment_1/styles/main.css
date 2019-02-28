@@ -8,6 +8,7 @@ body {
   padding: 0;
   position: relative;
   margin: 0;
+  background: #104c97;
 }
 
 h2, h3 {
@@ -74,4 +75,7 @@ main {
   overflow: auto;
   padding: 2rem;
   padding-top: 64px;
+  min-height: calc(100% - 64px);
+  max-width: 1100px;
+  margin: auto;
 }
