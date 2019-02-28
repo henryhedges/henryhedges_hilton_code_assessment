@@ -6,33 +6,35 @@
 
 ```
 
-### Assignment 1
+## Assignment 1
 
 The index.html file will need to be loaded in your browser.
 
 After navigating to henryhedges_hilton_code_assessment, you can do this by:
 
-A) Navigating to Assessment_1/index.html file in Finder or your filesystem and opening it in Chrome.
+### Navigating to Assessment_1/index.html file in Finder or your filesystem and opening it in Chrome.
 
 OR 
 
-B) in your Terminal:
+### In your Terminal:
 ```
 cd Assessment_1
 ```
+Print your directory with ```pwd```and copy the results.
 
-Then if you are on a mac:
-- print your directory with ```pwd```and copy the results. That result and add it to this command.
+Then if you are on a mac, add that result and add it to this command.
 ```
 open -a "Google Chrome" [[[[ your pwd result ]]]]/index.html
 ```
+If you are not on a mac, open Chrome and paste into the url bar.
 
 Assumptions and code considerations are listed in Assessment_1/Assumptions.md
 
-### Assessment 2
+## Assessment 2
 
-Naviate to the Assesment_2 folder. Then:
+Navigate to the Assesment_2 folder. 
 
+Then:
 ```
   npm i
   npm start
