@@ -1,11 +1,19 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from "react"
+import PropTypes from 'prop-types'
 
 class RoomCard extends React.Component {
   createNumericOptions(limit = 2, type) {
     const options = []
 
     for (let i = 0; i < limit; i++) {
-      options.push(<option key={`${i}-${type}`} value={i}>{i}</option>)
+      options.push(
+        <option
+          key={`${i}-${type}`}
+          value={i}
+        >
+          {i}
+        </option>
+      )
     }
 
     return options
@@ -19,32 +27,53 @@ class RoomCard extends React.Component {
       roomKey, 
       roomNumber, 
       selected, 
-      selectedChange
+      selectedChange,
     } = this.props
 
     const isFirstRoom = roomNumber === 1
 
     return (
       <Fragment>
-        <div className={`index_content_room-card ${!selected && '--disabled'}`}>
+        <div className={`index_content_room-card ${!selected && '--disabled'}`} data-testroom>
           <div className='inputwrapper'>
             { !isFirstRoom && (
-                <input checked={selected} type='checkbox' onChange={(e) => inputChange(roomKey, 'selected', e.target.checked)}/>
+              <input
+                checked={selected}
+                data-testcheckbox
+                onChange={
+                  (e) => inputChange(roomKey, 'selected', e.target.checked)
+                }
+                type='checkbox'
+              />
               )
             }
-            <h5 className='roomname'>Room {roomNumber}</h5>
+            <h4 className='roomname'>Room {roomNumber}</h4>
           </div>
           <div className='selectcontainer'>
             <span className='selectwrapper'>
               <label>Adults<br/>(18+)</label>
-              <select disabled={!selected} value={adults} onChange={(e) => selectedChange(roomKey, 'adults', e.target.value)}>
-                { this.createNumericOptions() }
+              <select
+                data-testadults
+                disabled={!selected}
+                onChange={
+                  (e) => selectedChange(roomKey, 'adults', e.target.value)
+                }
+                value={adults}
+              >
+                {this.createNumericOptions()}
               </select>
             </span>
             <span className='selectwrapper'>
               <label>Children<br/>(0-17)</label>
-              <select disabled={!selected} value={kids} onChange={(e) => selectedChange(roomKey, 'kids', e.target.value)}>
-                { this.createNumericOptions(4) }
+              <select
+                data-testkids                
+                disabled={!selected}
+                onChange={
+                  (e) => selectedChange(roomKey, 'kids', e.target.value)
+                }
+                value={kids}
+              >
+                {this.createNumericOptions(4)}
               </select>
             </span>
           </div>
@@ -72,7 +101,10 @@ class RoomCard extends React.Component {
 
         .index_content_room-card .inputwrapper {
           border-radius: 1rem 1rem 0 0;
-          padding: .5rem;
+          display: flex;
+          align-items: center;
+          padding-left: .75rem;
+          margin-bottom: .5rem;
         }
 
         .index_content_room-card .inputwrapper > .roomname {
@@ -81,6 +113,7 @@ class RoomCard extends React.Component {
         }
 
         .index_content_room-card .inputwrapper > input {
+          cursor: pointer;
           margin-right: .5rem;
         }
 
@@ -97,20 +130,27 @@ class RoomCard extends React.Component {
 
         .index_content_room-card .selectwrapper > label {
           display: block;
-          font-size: 1.25rem;
           font-weight: 400;
         }
-
       `}</style>
     </Fragment>        
-    );
+    )
   }
 }
 
 RoomCard.defaultProps = {
-  adults: 1,
-  kids: 0,
-  selectedChange: () => {}
-};
+  adults: '1',
+  kids: '0',
+}
 
-export default RoomCard;
+RoomCard.propTypes = {
+  adults: PropTypes.string,
+  inputChange: PropTypes.func.isRequired,
+  kids: PropTypes.string,
+  roomKey: PropTypes.string.isRequired, 
+  roomNumber: PropTypes.number.isRequired, 
+  selected: PropTypes.bool.isRequired, 
+  selectedChange: PropTypes.func.isRequired,
+}
+
+export default RoomCard

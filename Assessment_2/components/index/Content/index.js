@@ -1,7 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import RoomCard from './RoomCard'
-
-const LOCAL_STORAGE_KEY = 'appdata'
+import { LOCAL_STORAGE_KEY } from '../../../data/index/constants'
 
 class Content extends React.Component {
   state = {
@@ -9,13 +9,14 @@ class Content extends React.Component {
   }
 
   componentDidMount() {
-    let { data } = this.props;
+    const { maxRooms } = this.props
+    let { data } = this.props
 
     if (!data.length && this.checkLocalStorage()) {
       data = this.getLocalData()
     }
 
-    this.setState(this.createInitialState(data, 4))
+    this.setState(this.createInitialState(data, maxRooms))
   }
 
   checkLocalStorage() {
@@ -34,7 +35,7 @@ class Content extends React.Component {
     return {
       selected: i === 0,
       adults: '1',
-      kids: '0'
+      kids: '0',
     }
   }
 
@@ -97,8 +98,8 @@ class Content extends React.Component {
       ...state, 
       [room]: {
         ...state[room],
-        [key]: value
-      }
+        [key]: value,
+      },
     }
   }
 
@@ -121,11 +122,14 @@ class Content extends React.Component {
   
   render() {
     return (
-      <form className="index_content" onSubmit={this.submit}>
+      <form
+        className="index_content"
+        onSubmit={this.submit}
+      >
         <div className="roomcardcontainer">
           {this.renderRooms(this.state.roomsOrder)}
         </div>
-        <button type='submit'>Submit</button>
+        <button type='submit' data-testsubbtn>Submit</button>
         <style jsx>{`
           .index_content {
             padding: 3rem;
@@ -141,7 +145,13 @@ class Content extends React.Component {
 }
 
 Content.defaultProps = {
-  data: []
+  data: [],
+  maxRooms: 4,
+}
+
+Content.propTypes = {
+  data: PropTypes.array,
+  maxRooms: PropTypes.number,
 }
 
 export default Content
