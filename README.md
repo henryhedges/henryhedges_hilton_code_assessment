@@ -32,6 +32,7 @@ Assumptions and code considerations are listed in Assessment_1/Assumptions.md
 
 ## Assessment 2
 
+### To take a look at UI:
 Navigate to the Assesment_2 folder. 
 
 Then:
@@ -40,6 +41,13 @@ Then:
   npm start
 ```
 
-Then open your browser to localhost:3000.
+Once all the dependencies have been downloaded and your Next.js server is running,  navigate in your browser to localhost:3000.
+
+### To run the code tests: 
+
+```
+npm run test
+```
+
 
 Assumptions and code considerations are listed in Assessment_2/Assumptions.md
