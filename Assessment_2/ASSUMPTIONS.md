@@ -2,7 +2,7 @@
 1) There are only 4 rooms (no more, no less) that a person can reserve.
 2) There is always a minimum of one room reservation that the user must submit.
 3) There is no data that will be retrieved on the very first render.
-4) There can be rooms with all children, all adults or a combination of the two.
+4) There could be rooms with all children, all adults or a combination of the two. Spec one states there should be at least one adult per room, though that may not always hold true. For example: there could be adjoining rooms, or it could be a room block for a chaparone and some kids on a school trip.
 5) There is not a need currently to reposition the order of the rooms - this could come into play if a user wanted to schedule a room for a specific person or group of people and avoid having one disabled.
 6) There is not a need to save the current state of a users selection when they change a value (only saves when clicking 'submit'). Saving changes locally on any change could be a nice UX benefit, then the submit button could be used to save the selections to a database. 
 7) There are no transition effects or loaders that show after successfully saving selections.
@@ -17,3 +17,4 @@
 5) It uses Reboot.css from bootstrap to set base styles.
 6) Chose to design the state in a way to access data quickly and take advantage of component mapping in the render() method.
 7) Incoming data (coming from local storage) will have a 'selected' field. This would likely not be added to the data if retrieved from an API.
+8) The files are laid out according to the page title. For example all components for page/index.js are located in components/index.js, and all data for the page is located in data/index/. The exception is the Layout component which could be used across pages.

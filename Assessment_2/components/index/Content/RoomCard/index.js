@@ -60,7 +60,7 @@ class RoomCard extends React.Component {
                 }
                 value={adults}
               >
-                {this.createNumericOptions()}
+                {this.createNumericOptions(3)}
               </select>
             </span>
             <span className='selectwrapper'>
