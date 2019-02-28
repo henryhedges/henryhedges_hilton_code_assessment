@@ -6,26 +6,28 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/components.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/modifications.css" />
 </head>
 <body>
-  <header class="header">
+  <header>
     <nav>
-      <a class="header__nav-button" href="#back"><span>&lsaquo;</span><span>Back</span></a>
+      <a class="header_nav-button" href="#back"><span class="--mr-p5">&lsaquo;</span><span>Back</span></a>
     </nav>
-    <h3 class="header__details">Hotel Details</h3>
+    <h2 class="header_details">Hotel Details</h2>
     <a href="#home"><img src="images/Hilton_Brand_Logo_No_Text.png"/></a>
   </header>
   <main>
-    <section class="content">
-      <figure class="figure">
+    <section class="--pt-2rem --mb-2rem">
+      <figure class="hotel-img --flex-jc-start --mb-2rem">
         <a href="#chicago">
-          <img src="images/hotelexterior.jpg" alt="Hilton Chicago - Building Exterior"/>
+          <img alt="Hilton Chicago - Building Exterior" class="hotel-img_img" src="images/hotelexterior.jpg" />
         </a>
       </figure>
-      <article class="contact">
+      <article class="contact --mb-2rem">
         <h2>Hilton Chicago</h2>
-        <div class="address">720 South Michigan Avenue</div>
-        <div class="address">Chicago, Illinois, 60605</div>
+        <div class="contact_address">720 South Michigan Avenue</div>
+        <div class="contact_address">Chicago, Illinois, 60605</div>
         <a href="tel:+13129224400">1-312-922-4400</a>
       </article>
     </section>
@@ -39,7 +41,7 @@
     </nav>
   </main>
   <footer>
-    <div></div><img src="images/Hilton_Brand_Logo_Text_Only.png"/><span>2019</span></div>
+    <img src="images/Hilton_Brand_Logo_Text_Only.png"/></div>
   </footer>
 </body>
 </html>

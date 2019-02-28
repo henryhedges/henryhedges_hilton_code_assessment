@@ -1,0 +1,71 @@
+.contact {
+  color: white;
+}
+
+.contact > * {
+  margin-bottom: .5rem;
+  margin-top: 0;
+}
+
+.contact > .contact_address {
+  color: #7ba4cc;
+}
+
+.hotel-img {
+  display: flex;
+  margin: 0;
+}
+
+.hotel-img .hotel-img_img {
+  border: 3px solid white;
+  cursor: pointer;
+}
+
+ul.menu {
+  background: white;
+  border-radius: .35rem;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  max-width: 300px;
+}
+
+ul.menu > li {
+  background-image: linear-gradient(transparent, #dfe4eb);
+  cursor: pointer;
+  list-style: none;
+  padding: .75rem;
+}
+
+ul.menu > li > a {
+  color: initial;
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+}
+
+ul.menu > li:not(:first-child) {
+  border-top: 1px solid #dfe4eb;
+}
+
+ul.menu > li:not(:last-child) {
+  border-bottom: 1px solid white;
+}
+
+@media screen and (max-width: 450px) {
+  .hotel-img .hotel-img_img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 451px) and (max-width: 768px) {
+  .hotel-img a { 
+    height: 100%;
+  }
+
+  .hotel-img .hotel-img_img {
+    width: 80%;
+    height: 80%;
+  }
+}

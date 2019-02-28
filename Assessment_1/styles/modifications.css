@@ -1,0 +1,31 @@
+.--pt-2rem {
+  padding-top: 2rem;
+}
+
+.--pl-2rem {
+  padding-top: 2rem;
+}
+
+.--pr-2rem {
+  padding-top: 2rem;
+}
+
+.--pb-2rem {
+  padding-top: 2rem;
+}
+
+.--mb-2rem {
+  margin-bottom: 2rem;
+}
+
+.--mr-p5 {
+  margin-right: .5rem;
+}
+
+.--flex-jc-start {
+  justify-content: start;
+}
+
+.--text-white{
+  color: white;
+}
