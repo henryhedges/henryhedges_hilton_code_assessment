@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 
 import RoomCard from '..'
 
@@ -21,21 +21,22 @@ const setup = (customProps) => {
 
   return {
     props,
-    shallowRender: shallow(<RoomCard {...props}/>)
+    mountedRender: mount(<RoomCard {...props} />),
+    shallowRender: shallow(<RoomCard {...props} />)
   }
 }
 
 describe('RoomCard component', () => {
   describe('disable elements', () => { 
-    it('should disable all elements except the input checkbox if unchecked (for rooms other than 1)', () => {
-      const { shallowRender } = setup({ selected: false })
+    it.only('should disable all elements except the input checkbox if unchecked (for rooms other than 1)', () => {
+      const { mountedRender } = setup({ selected: false })
 
-      const selectElms = shallowRender.find('select').length
-      const inputElms = shallowRender.find('input').length
+      const selectElms = mountedRender.find('select').length
+      const inputElms = mountedRender.find('input').length
       const totalTargetElms = (selectElms + inputElms) - 1
 
-      expect(shallowRender.find('[data-testcheckbox]').prop('checked')).toBe(false)
-      expect(shallowRender.find('[disabled=true]').length).toEqual(totalTargetElms)
+      expect(mountedRender.find('[data-testcheckbox]').at(0).getDOMNode().checked).toBe(false)
+      expect(mountedRender.find('[disabled=true]').length).toEqual(totalTargetElms)
     })
 
     it('should not show checkbox input if room is first room', () => {
