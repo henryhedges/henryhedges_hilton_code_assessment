@@ -124,16 +124,15 @@ describe('Content component', () => {
     it('should check inputs in rooms prior to newly checked room', () => {
       const { mountedRender } = setup()
       const checkboxes = mountedRender.find('[data-testcheckbox]')
-
-      expect(checkboxes.at(0).prop('checked')).toBe(false)
-      expect(checkboxes.at(1).prop('checked')).toBe(false)
-      expect(checkboxes.at(2).prop('checked')).toBe(false)
-
+      expect(checkboxes.at(0).getDOMNode().checked).toBe(false)
+      expect(checkboxes.at(1).getDOMNode().checked).toBe(false)
+      expect(checkboxes.at(2).getDOMNode().checked).toBe(false)
+      
       checkboxes.at(1).simulate('change', {target: {checked: true}})
-
-      expect(mountedRender.find('[data-testcheckbox]').at(0).prop('checked')).toBe(true)
-      expect(mountedRender.find('[data-testcheckbox]').at(1).prop('checked')).toBe(true)
-      expect(mountedRender.find('[data-testcheckbox]').at(2).prop('checked')).toBe(false)
+      
+      expect(mountedRender.find('[data-testcheckbox]').at(0).getDOMNode().checked).toBe(true)
+      expect(mountedRender.find('[data-testcheckbox]').at(1).getDOMNode().checked).toBe(true)
+      expect(mountedRender.find('[data-testcheckbox]').at(2).getDOMNode().checked).toBe(false)
     })
 
     it('should uncheck inputs in rooms after the newly unchecked room', () => {
@@ -141,35 +140,35 @@ describe('Content component', () => {
 
       mountedRender.find('[data-testcheckbox]').at(1).simulate('change', {target: {checked: true}})
 
-      expect(mountedRender.find('[data-testcheckbox]').at(0).prop('checked')).toBe(true)
-      expect(mountedRender.find('[data-testcheckbox]').at(1).prop('checked')).toBe(true)
-      expect(mountedRender.find('[data-testcheckbox]').at(2).prop('checked')).toBe(false)
+      expect(mountedRender.find('[data-testcheckbox]').at(0).getDOMNode().checked).toBe(true)
+      expect(mountedRender.find('[data-testcheckbox]').at(1).getDOMNode().checked).toBe(true)
+      expect(mountedRender.find('[data-testcheckbox]').at(2).getDOMNode().checked).toBe(false)
 
       mountedRender.find('[data-testcheckbox]').at(1).simulate('change', {target: {checked: false}})
 
-      expect(mountedRender.find('[data-testcheckbox]').at(0).prop('checked')).toBe(true)
-      expect(mountedRender.find('[data-testcheckbox]').at(1).prop('checked')).toBe(false)
-      expect(mountedRender.find('[data-testcheckbox]').at(2).prop('checked')).toBe(false)
+      expect(mountedRender.find('[data-testcheckbox]').at(0).getDOMNode().checked).toBe(true)
+      expect(mountedRender.find('[data-testcheckbox]').at(1).getDOMNode().checked).toBe(false)
+      expect(mountedRender.find('[data-testcheckbox]').at(2).getDOMNode().checked).toBe(false)
     })
 
     it('should update selected adult rooms', () => {
       const { mountedRender } = setup()
 
-      expect(mountedRender.find('[data-testcheckbox]').at(0).closest('[data-testroom]').find('select[data-testadults]').prop('disabled')).toBe(true)
+      expect(mountedRender.find('[data-testcheckbox]').at(0).closest('[data-testroom]').find('select[data-testadults]').getDOMNode().disabled).toBe(true)
       
       mountedRender.find('[data-testcheckbox]').at(0).simulate('change', {target: {checked: true}})
       
-      expect(mountedRender.find('[data-testcheckbox]').at(0).closest('[data-testroom]').find('select[data-testadults]').prop('disabled')).toBe(false)
+      expect(mountedRender.find('[data-testcheckbox]').at(0).closest('[data-testroom]').find('select[data-testadults]').getDOMNode().disabled).toBe(false)
     })
 
     it('should update selected child rooms', () => {
       const { mountedRender } = setup()
 
-      expect(mountedRender.find('[data-testcheckbox]').at(0).closest('[data-testroom]').find('select[data-testkids]').prop('disabled')).toBe(true)
+      expect(mountedRender.find('[data-testcheckbox]').at(0).closest('[data-testroom]').find('select[data-testkids]').getDOMNode().disabled).toBe(true)
       
       mountedRender.find('[data-testcheckbox]').at(0).simulate('change', {target: {checked: true}})
       
-      expect(mountedRender.find('[data-testcheckbox]').at(0).closest('[data-testroom]').find('select[data-testkids]').prop('disabled')).toBe(false)
+      expect(mountedRender.find('[data-testcheckbox]').at(0).closest('[data-testroom]').find('select[data-testkids]').getDOMNode().disabled).toBe(false)
     })
   })
 })

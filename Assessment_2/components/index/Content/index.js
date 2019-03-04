@@ -126,17 +126,19 @@ class Content extends React.Component {
         className="index_content"
         onSubmit={this.submit}
       >
-        <div className="roomcardcontainer">
+        <span className="roomcardcontainer">
           {this.renderRooms(this.state.roomsOrder)}
-        </div>
+        </span>
         <button type='submit' data-testsubbtn>Submit</button>
         <style jsx>{`
           .index_content {
             padding: 3rem;
           }
+
           .index_content > .roomcardcontainer {
             display: flex;
             margin-bottom: 3rem;
+            flex-wrap: wrap;
           }
         `}</style>
       </form>

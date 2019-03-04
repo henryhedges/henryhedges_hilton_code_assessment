@@ -18,3 +18,4 @@
 6) Chose to design the state in a way to access data quickly and take advantage of component mapping in the render() method.
 7) Incoming data (coming from localStorage) will have a 'selected' field. This would likely not be added to the data if retrieved from an API.
 8) The files are laid out according to the page title. For example all components for page/index.js are located in components/index/, and all data for the page is located in data/index/. The exception is the Layout component which could be used across pages.
+9) This application uses Next.JS as a base, as requested in the prompt (see prompt.txt). While Next.JS is a very easy to use and handy tool, it will require some configuration to use things like redux and overtime these configurations may limit functionality or introduce more hoops to jump through for developers.

@@ -31,30 +31,34 @@ class RoomCard extends React.Component {
     } = this.props
 
     const isFirstRoom = roomNumber === 1
+    const roomId = `${roomKey}-room`
+    const kidsId = `${roomKey}-kids`
+    const adultsId = `${roomKey}-adults`
 
     return (
       <Fragment>
-        <div className={`index_content_room-card ${!selected && '--disabled'}`} data-testroom>
+        <span className={`index_content_room-card ${!selected && '--disabled'}`} data-testroom>
           <div className='inputwrapper'>
-            { !isFirstRoom && (
+            {!isFirstRoom && (
               <input
                 checked={selected}
                 data-testcheckbox
+                id={roomId}
                 onChange={
                   (e) => inputChange(roomKey, 'selected', e.target.checked)
                 }
                 type='checkbox'
               />
-              )
-            }
-            <h4 className='roomname'>Room {roomNumber}</h4>
+            )}
+            <label htmlFor={roomId} className='roomname'>Room {roomNumber}</label>
           </div>
           <div className='selectcontainer'>
             <span className='selectwrapper'>
-              <label>Adults<br/>(18+)</label>
+              <label htmlFor={adultsId}>Adults<br/>(18+)</label>
               <select
                 data-testadults
                 disabled={!selected}
+                id={adultsId}
                 onChange={
                   (e) => selectedChange(roomKey, 'adults', e.target.value)
                 }
@@ -64,10 +68,11 @@ class RoomCard extends React.Component {
               </select>
             </span>
             <span className='selectwrapper'>
-              <label>Children<br/>(0-17)</label>
+              <label htmlFor={kidsId}>Children<br/>(0-17)</label>
               <select
                 data-testkids                
                 disabled={!selected}
+                id={kidsId}
                 onChange={
                   (e) => selectedChange(roomKey, 'kids', e.target.value)
                 }
@@ -77,16 +82,17 @@ class RoomCard extends React.Component {
               </select>
             </span>
           </div>
-        </div>
+        </span>
         <style jsx>{`
-        .index_content_room-card:not(:last-child){
-          margin-right: 1rem;
-        }
-
         .index_content_room-card {
           background: #F0F0F0;
           border-radius: 1rem;
           border: .4rem solid #F0F0F0;
+          margin-bottom: 1rem;
+        }
+
+        .index_content_room-card:not(:last-child){
+          margin-right: 1rem;
         }
 
         .index_content_room-card.--disabled {
