@@ -31,25 +31,26 @@ class RoomCard extends React.Component {
     } = this.props
 
     const isFirstRoom = roomNumber === 1
+    const roomId = `${roomKey}-room`
     const kidsId = `${roomKey}-kids`
     const adultsId = `${roomKey}-adults`
 
     return (
       <Fragment>
-        <div className={`index_content_room-card ${!selected && '--disabled'}`} data-testroom>
+        <span className={`index_content_room-card ${!selected && '--disabled'}`} data-testroom>
           <div className='inputwrapper'>
-            { !isFirstRoom && (
+            {!isFirstRoom && (
               <input
                 checked={selected}
                 data-testcheckbox
+                id={roomId}
                 onChange={
                   (e) => inputChange(roomKey, 'selected', e.target.checked)
                 }
                 type='checkbox'
               />
-              )
-            }
-            <h4 className='roomname'>Room {roomNumber}</h4>
+            )}
+            <label htmlFor={roomId} className='roomname'>Room {roomNumber}</label>
           </div>
           <div className='selectcontainer'>
             <span className='selectwrapper'>
@@ -81,16 +82,17 @@ class RoomCard extends React.Component {
               </select>
             </span>
           </div>
-        </div>
+        </span>
         <style jsx>{`
-        .index_content_room-card:not(:last-child){
-          margin-right: 1rem;
-        }
-
         .index_content_room-card {
           background: #F0F0F0;
           border-radius: 1rem;
           border: .4rem solid #F0F0F0;
+          margin-bottom: 1rem;
+        }
+
+        .index_content_room-card:not(:last-child){
+          margin-right: 1rem;
         }
 
         .index_content_room-card.--disabled {

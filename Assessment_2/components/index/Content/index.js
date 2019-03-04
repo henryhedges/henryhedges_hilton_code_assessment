@@ -134,9 +134,11 @@ class Content extends React.Component {
           .index_content {
             padding: 3rem;
           }
+
           .index_content > .roomcardcontainer {
             display: flex;
             margin-bottom: 3rem;
+            flex-wrap: wrap;
           }
         `}</style>
       </form>
