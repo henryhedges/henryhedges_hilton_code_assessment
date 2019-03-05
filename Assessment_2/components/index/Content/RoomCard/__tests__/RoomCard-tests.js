@@ -28,7 +28,7 @@ const setup = (customProps) => {
 
 describe('RoomCard component', () => {
   describe('disable elements', () => { 
-    it.only('should disable all elements except the input checkbox if unchecked (for rooms other than 1)', () => {
+    it('should disable all elements except the input checkbox if unchecked (for rooms other than 1)', () => {
       const { mountedRender } = setup({ selected: false })
 
       const selectElms = mountedRender.find('select').length
